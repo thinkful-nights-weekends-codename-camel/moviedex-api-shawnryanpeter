@@ -1,0 +1,29 @@
+{
+  "name": "movie-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-nights-weekends-codename-camel/moviedex-api-shawnryanpeter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-nights-weekends-codename-camel/moviedex-api-shawnryanpeter/issues"
+  },
+  "homepage": "https://github.com/thinkful-nights-weekends-codename-camel/moviedex-api-shawnryanpeter#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1"
+  }
+}
