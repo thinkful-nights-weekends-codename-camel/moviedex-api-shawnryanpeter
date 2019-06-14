@@ -25,19 +25,25 @@ app.use(function validateBearerToken(req, res, next) {
 app.get('/movies', function handleGetMovies(req, res) {
     let response = MOVIES.movies;
 
-    /*if(req.query.rating){
+    if(req.query.avg_vote){
         response = response.filter(movie => 
-            movie.rating.toLowercase().includes(req.rating.genre))
-    }*/
+            Number(movie.avg_vote) >= Number(req.query.avg_vote))
+    }
 
-    /*if(req.query.country){
+    if(req.query.country){
         response = response.filter(movie => 
-            movie.country.toLowercase().includes(req.query.country))
-    }*/
+            movie.country.toLowerCase().includes(req.query.country.toLowerCase()))
+    }
 
     if(req.query.genre){
         response = response.filter(movie => 
-            movie.genre.toLowercase().includes(req.query.genre.toLowerCase()))
+            movie.genre.toLowerCase().includes(req.query.genre.toLowerCase()))
+    }
+
+    if(response.length === 0) {
+        res.status(200).send('We didn\'t find any movies!');
+    } else {
+        res.json(response);
     }
 })
 
