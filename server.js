@@ -12,14 +12,19 @@ app.use(morgan(morganSetting))
 app.use(cors())
 app.use(helmet())
  
+app.get('/movies2', function (req,res) {
+    console.log('Hollow Wurld');
+    return res.status(200).json({'Hello': 'World'});
+});
+
 app.use(function validateBearerToken(req, res, next) {
     const apiToken = process.env.API_TOKEN
     const authToken = req.get('Authorization')
     if(!authToken || authToken.split(' ')[1] !== apiToken){
-        return res.status(401).json({error: 'Unauthorized request'})
+        return res.status(403).json({error: 'Unauthorized request'})
     }
     next()
-})
+});
 
 app.get('/movies', function handleGetMovies(req, res) {
     let response = MOVIES.movies;
@@ -56,7 +61,7 @@ app.use((error, req, res, next) => {
     res.status(500).json(response)
   });
 
-const PORT = process.env.PORT || 8000 ;
+const PORT = process.env.PORT || 8080 ;
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`)
